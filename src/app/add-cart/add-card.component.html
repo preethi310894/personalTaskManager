@@ -1,0 +1,28 @@
+<div>
+    <form class="card-form">
+        <mat-form-field class="card-full-width">
+            <mat-label>Card Title</mat-label>
+            <input matInput placeholder="Card Title" [(ngModel)]="data.title" name="tilte">
+        </mat-form-field>
+        <mat-form-field class="card-full-width">
+            <mat-label>Card Description </mat-label>
+            <input matInput placeholder="Card Description" [(ngModel)]="data.desc" name="desc">
+        </mat-form-field>
+        <mat-form-field class="card-full-width">
+            <mat-label>Add a comment</mat-label>
+            <textarea matInput placeholder="Comments" [(ngModel)]="comment" name="comments"></textarea>
+        </mat-form-field>
+        <button mat-stroked-button (click)='addComment()'>Add Comment</button>&nbsp;&nbsp;
+        <button mat-stroked-button (click)='onSave()'>Save</button>
+        <button mat-stroked-button (click)='onClose()' style="float:right">Close</button>
+        <div>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let cmt of data.comments;let i = index" role="listitem">
+                    <p style="padding-right: 30px;">{{cmt.comment}}</p>
+                    <p>{{cmt.ts}}</p>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </form>
+
+</div>

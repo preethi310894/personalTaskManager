@@ -1,0 +1,43 @@
+<html>
+
+<body>
+  <div class="container"><br>
+    <div class='header'>Personal Task Manager</div>
+    <div class='addList'>
+      <button mat-raised-button color="primary" (click)="addList()" style="float:right;padding-right: 20px;">Add new
+        List</button>
+    </div>
+    <div><br>
+      <div *ngFor="let list of listData;let i = index" class="addCard">
+        <div class='list'>
+          <b>List {{i+1}} </b>
+          <button mat-button color="warn" (click)='deleteList(i)'>Delete this list</button>
+          <br><br>
+          <div class='cards'>
+          <div cdkDropList (cdkDropListDropped)="drop($event,i)">
+            <div *ngFor="let card of list.cardData;let j = index" cdkDrag style="padding-bottom: 10px;">
+              <div class='card'>
+                <div class='card-title'>{{card.title}}</div>
+                <b>Description: </b> {{card.desc}}<br><br>
+                <b style="padding-right: 20px;">Comments: </b> {{getComments(card.comments)}}
+              </div>
+              <div class='icons'>
+                <button mat-fab color="primary" (click)="editCard(i,j)">
+                  <mat-icon>edit</mat-icon>
+                </button>&nbsp;
+                <button mat-fab color="warn" (click)="deleteCard(i,j)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <button mat-stroked-button color="accent" (click)="addCard(i)">Add new Card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
